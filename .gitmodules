@@ -1,6 +1,0 @@
-[submodule "php-json-ld"]
-	path = php-json-ld
-	url = https://github.com/digitalbazaar/php-json-ld.git
-[submodule "support/php-json-ld"]
-	path = support/php-json-ld
-	url = https://github.com/digitalbazaar/php-json-ld.git
