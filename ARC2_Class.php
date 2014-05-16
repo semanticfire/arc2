@@ -366,6 +366,13 @@ class ARC2_Class {
     return (isset($v[0]) && isset($v[0]['s'])) ? $ser->getSerializedTriples($v, $raw) : $ser->getSerializedIndex($v, $raw);
   }
   
+  function toJSONLD($v, $ns = '', $raw = 0) {
+  	ARC2::inc('JSONLDSerializer');
+  	if (!$ns) $ns = isset($this->a['ns']) ? $this->a['ns'] : array();
+  	$ser = new ARC2_JSONLDSerializer(array_merge($this->a, array('ns' => $ns)), $this);
+  	return (isset($v[0]) && isset($v[0]['s'])) ? $ser->getSerializedIndex(ARC2::getSimpleIndex($v,false), $raw) : $ser->getSerializedIndex($v, $raw);
+  }
+  
   function toRDFXML($v, $ns = '', $raw = 0) {
     ARC2::inc('RDFXMLSerializer');
     if (!$ns) $ns = isset($this->a['ns']) ? $this->a['ns'] : array();

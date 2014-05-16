@@ -53,7 +53,8 @@ class ARC2_RDFParser extends ARC2_Class {
       'rss' => 'RSS',
       'atom' => 'Atom',
       'sgajson' => 'SGAJSON',
-      'cbjson' => 'CBJSON'
+      'cbjson' => 'CBJSON',
+      'jsonld' => 'JSONLD'
     );
     $format = $this->reader->getFormat();
     if (!$format || !isset($mappings[$format])) {
