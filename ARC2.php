@@ -384,6 +384,10 @@ class ARC2 {
   static function getTurtleParser($a = '') {
     return ARC2::getParser('Turtle', $a);
   }
+  
+  static function getJSONLDParser($a = '') {
+  	return ARC2::getParser('JSONLD', $a);
+  }
 
   static function getRSSParser($a = '') {
     return ARC2::getParser('RSS', $a);

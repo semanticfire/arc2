@@ -14,6 +14,7 @@ function ARC2_getFormat($v, $mtype = '', $ext = '') {
   $r = (!$r && preg_match('/\/atom\+xml/', $mtype)) ? 'atom' : $r;
   $r = (!$r && preg_match('/\/rdf\+xml/', $mtype)) ? 'rdfxml' : $r;
   $r = (!$r && preg_match('/\/(x\-)?turtle/', $mtype)) ? 'turtle' : $r;
+  $r = (!$r && preg_match('/\/(x\-)?ld-json/', $mtype)) ? 'jsonld' : $r;
   $r = (!$r && preg_match('/\/rdf\+n3/', $mtype)) ? 'n3' : $r;
   $r = (!$r && preg_match('/\/sparql-results\+xml/', $mtype)) ? 'sparqlxml' : $r;
   /* xml sniffing */
@@ -52,6 +53,8 @@ function ARC2_getFormat($v, $mtype = '', $ext = '') {
     $r = (!$r && preg_match('/\"canonical_mapping\"/', $v)) ? 'sgajson' : $r;
     /* crunchbase api */
     $r = (!$r && preg_match('/\"permalink\"/', $v)) ? 'cbjson' : $r;
+    
+    $r = (!$r && preg_match('/\"@context\"/', $v)) ? 'jsonld' : $r;
 
     $r = !$r ? 'json' : $r;
   }
@@ -62,5 +65,5 @@ function ARC2_getFormat($v, $mtype = '', $ext = '') {
   /* ntriples */
   $r = (!$r && preg_match('/^\s*(_:|<).+?\s+<[^>]+?>\s+\S.+?\s*\.\s*$/sm', $v)) ? 'ntriples' : $r;
   $r = (!$r && preg_match('/^(nt)$/', $ext)) ? 'ntriples' : $r;
-  return $r;
+ return $r;
 }

@@ -30,7 +30,10 @@ class ARC2_JSONLDSerializer extends ARC2_RDFSerializer {
 	private function jsonldFromARC2Index($index)
 	{
 		$subjects = array();
-
+		$ctx = new stdClass();
+		foreach($this->a['ns'] as $key => $val)
+		$ctx->{$key} = $val;
+		$subjects['@context']=$ctx; 
 		foreach($index as $subject => $props)
 		{
 			if(!isset($subjects[$subject]))
@@ -74,11 +77,12 @@ class ARC2_JSONLDSerializer extends ARC2_RDFSerializer {
 			}
 		}
 
-		$output = array();
+		$output = new stdClass();
 		foreach($subjects as $subject => $value)
 		{
-			$output[] = $value;
+			$output->{$subject} = $value;
 		}
 		return $output;
 	}
 }
+?>
