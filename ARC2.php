@@ -435,14 +435,18 @@ class ARC2 {
     return ARC2::getComponent('StoreEndpoint', $a, $caller);
   }
 
+  static function getRemoteStore11Endpoint($a = '', $caller = '') {
+  	return ARC2::getComponent('RemoteStore11Endpoint', $a, $caller);
+  }
+  
   static function getRemoteStore($a = '', $caller = '') {
     return ARC2::getComponent('RemoteStore', $a, $caller);
   }
   
-  static function getRemoteStore11Endpoint($a = '', $caller = '') {
-  	return ARC2::getComponent('RemoteStore11Endpoint', $a, $caller);
+  static function getRemoteStore11($a = '', $caller = '') {
+  	return ARC2::getComponent('RemoteStore11', $a, $caller);
   }
-
+  
   static function getMemStore($a = '') {
     return ARC2::getComponent('MemStore', $a);
   }
